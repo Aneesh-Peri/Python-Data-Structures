@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/01 ParenMatch" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/02 PostfixEval" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/03 InfixPostfixEval" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/05 Customers in a Queue" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/09 PriorityQueues" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

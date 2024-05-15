@@ -1,0 +1,112 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "SelectionSort_Driver",
+            "request": "launch",
+            "mainClass": "SelectionSort_Driver",
+            "projectName": "AP CS_8567c8d5"
+        },
+        {
+            "type": "java",
+            "name": "StringMethods",
+            "request": "launch",
+            "mainClass": "StringMethods",
+            "projectName": "AP CS_8567c8d5"
+        },
+        {
+            "type": "java",
+            "name": "AreaFill",
+            "request": "launch",
+            "mainClass": "AreaFill",
+            "projectName": "AP CS_8567c8d5"
+        },
+        {
+            "type": "java",
+            "name": "Hangman",
+            "request": "launch",
+            "mainClass": "Hangman",
+            "projectName": "AP CS_8567c8d5"
+        },
+        {
+            "type": "java",
+            "name": "MergeSort_Driver",
+            "request": "launch",
+            "mainClass": "MergeSort_Driver",
+            "projectName": "AP CS_8567c8d5"
+        },
+        {
+            "type": "java",
+            "name": "WinnerWinner",
+            "request": "launch",
+            "mainClass": "WinnerWinner",
+            "projectName": "AP CS_8567c8d5"
+        },
+        {
+            "type": "java",
+            "name": "Hailstone",
+            "request": "launch",
+            "mainClass": "Hailstone",
+            "projectName": "AP CS_8567c8d5"
+        },
+        {
+            "type": "java",
+            "name": "MazeGrandMaster",
+            "request": "launch",
+            "mainClass": "MazeGrandMaster",
+            "projectName": "AP CS_8567c8d5"
+        },
+        {
+            "type": "java",
+            "name": "NQueensDriver",
+            "request": "launch",
+            "mainClass": "NQueensDriver",
+            "projectName": "AP CS_8567c8d5"
+        },
+        {
+            "type": "java",
+            "name": "Permutations",
+            "request": "launch",
+            "mainClass": "Permutations",
+            "projectName": "AP CS_8567c8d5"
+        },
+        {
+            "type": "java",
+            "name": "MazeMaster",
+            "request": "launch",
+            "mainClass": "MazeMaster",
+            "projectName": "AP CS_8567c8d5"
+        },
+        {
+            "name": "Java",
+            "type": "java",
+            "request": "launch",
+            "stopOnEntry": true,
+            "jdkPath": "${env:JAVA_HOME}/bin",
+            "cwd": "${fileDirname}",
+            "startupClass": "${fileBasenameNoExtension}",
+            "classpath": [
+                ".",
+                "${fileDirname}"
+            ]
+        },
+        {
+            "name": "Java Console App",
+            "type": "java",
+            "request": "launch",
+            "stopOnEntry": true,
+            "jdkPath": "${env:JAVA_HOME}/bin",
+            "cwd": "${fileDirname}",
+            "startupClass": "${fileBasenameNoExtension}",
+            "classpath": [
+                ".",
+                "${fileDirname}"
+            ],
+            "externalConsole": true
+        }
+    ]
+}
