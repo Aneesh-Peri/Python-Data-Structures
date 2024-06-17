@@ -1,0 +1,6 @@
+{"timestamp":25468138,"category":"webcompatreporting","name":"reason_dropdown","extra":{"setting":"required","glean_timestamp":"1717184767763"}}
+{"timestamp":25468412,"category":"nimbus_events","name":"enrollment","extra":{"glean_timestamp":"1717184768037","experiment_type":"rollout","experiment":"address-autofill-desktop-release-rollout","branch":"enable-address-autofill"}}
+{"timestamp":25468493,"category":"nimbus_events","name":"enrollment","extra":{"experiment_type":"nimbus","branch":"control","glean_timestamp":"1717184768119","experiment":"device-migration-q4-spotlights"}}
+{"timestamp":25468503,"category":"nimbus_events","name":"enrollment","extra":{"branch":"control","glean_timestamp":"1717184768129","experiment_type":"rollout","experiment":"extensions-migration-in-import-wizard-116-rollout"}}
+{"timestamp":25468546,"category":"nimbus_events","name":"validation_failed","extra":{"feature":"frecency","reason":"invalid-feature","glean_timestamp":"1717184768172","experiment":"origins-ranking-experiment-revised"}}
+{"timestamp":25468547,"category":"nimbus_events","name":"is_ready","extra":{"glean_timestamp":"1717184768172"}}

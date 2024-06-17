@@ -20,11 +20,30 @@ class Neighbor implements Comparable<Neighbor>
       target = t;
       edgeDistance = d;
    }
+   public wVertex getTarget()
+   {
+      return target;
+   }
+   public double getDistance()
+   {
+      return edgeDistance;
+   }
    
    //add all methods needed for a HashSet and TreeSet to function with Neighbor objects
    //use only target, not distances, since a vertex can't have 2 neighbors that have the same target
    //.........
-   
+   public int hashCode()
+   {
+      return target.hashCode();
+   }
+   public boolean equals(Object other)
+   {
+      return hashCode() == other.hashCode();
+   }
+   public int compareTo(Neighbor n)
+   {
+      return target.compareTo(n.target);
+   }
    public String toString()
    {
       return target.getName() + " " + edgeDistance;  
@@ -44,6 +63,7 @@ class PQelement implements Comparable<PQelement> {
    public PQelement(wVertex v, double d) {
       vertex = v;
       distanceToVertex = d;
+      previous = null;
    }
    
    //getter and setter methods provided
@@ -81,7 +101,7 @@ class PQelement implements Comparable<PQelement> {
    public String toString()
    { 
       String toReturn = "";
-      //your code here...
+      toReturn += vertex.getName() + " " + distanceToVertex;
       
       return toReturn;
    }
@@ -131,16 +151,76 @@ class wVertex implements Comparable<wVertex>, wVertexInterface
    private ArrayList<PQelement> alDistanceToVertex; //should have no duplicates, enforced by the getter/setter methods
   
    /* constructor, accessors, modifiers  */ 
-   
-   
+   public wVertex(String name)
+   {
+      this.name = name;
+      neighbors = new TreeSet<Neighbor>();
+      alDistanceToVertex = new ArrayList<PQelement>();
+   }
+   public String getName()
+   {
+      return name;
+   }
+   public Set<Neighbor> getNeighbors()
+   {
+      return neighbors;
+   }
+   public void addAdjacent(wVertex v, double d)
+   {
+      neighbors.add(new Neighbor(v,d));
+   }
+   public ArrayList<PQelement> getAlDistanceToVertex()
+   {
+      return alDistanceToVertex;
+   }
+   public PQelement getPQelement(wVertex v)
+   {
+      for(PQelement x: alDistanceToVertex)
+      {
+         if(x.getVertex().equals(v))
+         {
+            return x;
+         }
+      }
+      return null;
+   }
+   public Double getDistanceToVertex(wVertex v)
+   {
+      if(getPQelement(v)==null)
+      {
+         return null;
+      }
+      return getPQelement(v).getDistanceToVertex();
+   }
+   public void setDistanceToVertex(wVertex v, double d)
+   {
+      if(getPQelement(v)!= null)
+      {
+         getPQelement(v).setDistanceToVertex(d);
+      }
+      else 
+      {
+         alDistanceToVertex.add(new PQelement(v,d));
+      }
+   }
+
    /* 2 vertexes are equal if and only if they have the same name
       add all methods needed for a HashSet and TreeSet to function with Neighbor objects
       use only target, not distances, since a vertex can't have 2 neighbors that have the same target   
    */
-   
-   
-   
-   
+   public int hashCode()
+   {
+      return name.hashCode();
+   }
+   public boolean equals(Object other)
+   {
+      return hashCode() == other.hashCode();
+   }
+   public int compareTo(wVertex v)
+   {
+      return name.compareTo(v.name);
+   }
+
    public String toString()
    { 
       String toReturn = name;
@@ -187,6 +267,64 @@ public class AdjListWeighted implements AdjListWeightedInterface//,AdjListWeight
    /* default constructor -- not needed!  */
   
    /* similar to AdjList, but handles distances (weights) and wVertex*/ 
+   public Set<wVertex> getVertices()
+   {
+      Set<wVertex> vertices = new HashSet<wVertex>();
+      for(String n: vertexMap.keySet())
+      {
+         vertices.add(vertexMap.get(n));
+      }
+      return vertices;
+   }
+   public Map<String, wVertex> getVertexMap()
+   {
+      return vertexMap;
+   }
+     //this is just for codepost testing
+   public wVertex getVertex(String vName)
+   {
+      return vertexMap.get(vName);
+   }
+   public void addVertex(String vName)
+   {
+      if(!vertexMap.containsKey(vName))
+      {
+         vertexMap.put(vName,new wVertex(vName));
+      }
+   }
+   public void addEdge(String source, String target, double d)
+   {
+      getVertex(source).addAdjacent(getVertex(target),d);
+   }
+   public void minimumWeightPath(String vertexName)
+   {
+      wVertex source = getVertex(vertexName);
+      for(String name: vertexMap.keySet())
+      {
+         source.setDistanceToVertex(getVertex(name),wVertex.NODISTANCE);
+      }
+      source.setDistanceToVertex(source,0);
+      PriorityQueue<PQelement> pq = new PriorityQueue<>();
+      for(PQelement pqr: source.getAlDistanceToVertex())
+         pq.add(pqr);
+      
+      while(!pq.isEmpty())
+      {
+         PQelement cur = pq.remove();
+         for(Neighbor n: cur.getVertex().getNeighbors())
+         {
+            double newCost = source.getDistanceToVertex(cur.getVertex()) + n.getDistance();
+            double old = source.getDistanceToVertex(n.getTarget());
+            if(newCost<old)
+            {
+               source.setDistanceToVertex(n.getTarget(),newCost);
+               pq.add(new PQelement(n.getTarget(),newCost));
+            }
+         }
+      }
+   }
+     
+
    
    
    public String toString()
